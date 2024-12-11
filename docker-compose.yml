@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  xroad-soap-adapter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3009:3000"
+    volumes:
+      - ./server.cert:/app/server.cert
+      - ./server.key:/app/server.key
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
